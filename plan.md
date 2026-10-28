@@ -23,9 +23,9 @@
     - Each note is then seperated by its source
     - resource/ -> Stores notes related to that resource
         - `src.txt` -> Stores the link to the resource
-        - Notes are named according to the resource module or their purpose (e.g. A note all about the inner workings of car engines will be named "car-engine.md")
         - Notes are created by..
             1. "Globbing" together information in bullet points, no thinking should be required, just bullet
+                - The "globbing" process can be a collection of information from a module usually defined by the resource or information of the entire resource
             ```
             # Note (temp)
             - Info_A
