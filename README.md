@@ -1,2 +1,3 @@
 # CTF-solutions
-A place to store all my notes and solutions to CTFs
+> A place to store all my notes from CTFs
+
