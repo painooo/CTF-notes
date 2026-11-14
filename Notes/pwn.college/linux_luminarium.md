@@ -81,7 +81,7 @@
 - Command Substitution -> Replaces `$(CMD)` w/ the output of `CMD`
     - `VAR=$(CMD)`
 
-# Linux Processes
+# Linux Processes CMDs
 - `ps` -> To list processes
 - `kill` -> To kill processes
 - `CTRL-C` -> Hotkey to kill the current process
@@ -90,10 +90,36 @@
 - `bg` -> Brings suspended processses into the background
 - `$?` -> Exit code of the previous command
 
-# Temp (glob)
+# Changing users & /etc/passwd + /etc/shadow
 - `username:password:uid:gid:home_directory:default_shell`
 - Actual password is stored in `/etc/shadow`
 - `/etc/passwd` exists for historical reasons
 
 - `su <username>` -> To change user
-- `sudo <CMD>` -> To run `CMD` as root 
+- `sudo <CMD>` -> To run `CMD` as root
+
+# Temp
+- Authorization -> What can you do in the system?
+- Authentication -> Who are you?
+- In a system @ a high level one must think about: who can do what? Do we trust them to do that? Can we eliminate risk? 
+
+- Authorization is the policy
+- Access Control implements Authorization
+    - Ex: Door & Lock: Only I can access the door; I implement that policy with lock 
+
+- How to model access control?
+    - Subjects S -> Things in the system which can act
+    - Objects O -> Things S can act on
+    - Rights R -> What can S do to O?
+    - Access Control Matrix -> Column (O), Row (S), and Cell (R)
+        - We can use this to think about how to attack a system 
+
+- In the (simplified) UNIX model:
+    - Subjects are processes
+    - Files are objects
+    - Rights are rights
+        - Read (r) -> A process can read the contents of this file
+        - Write (w) -> A process can change the contents of this file 
+        - Execute (x) -> A process can create a new process from this file (scripts & programs)
+        - Append (a) -> A process can add to the contents of the file
+        - Own (o) -> As the owner, I can grant rights to other processes
