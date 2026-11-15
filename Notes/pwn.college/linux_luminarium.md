@@ -1,7 +1,7 @@
 # Linux Luminarium
 > Manpages -> documentation (aka "your best friend")
 
-# The Prompt
+## The Prompt
 - `<username>@<hostname>:<cwd><$ or #> <cmd> <argument(s)>`
     - Called the "prompt" because it's prompting for a command
     - username -> Name of the current user
@@ -12,7 +12,7 @@
     - cmd -> command (e.g. ls)
     - argument(s) -> passes additional data to the command (e.g. ls **-la**)
 
-# Linux Filesystem
+## Linux Filesystem
 - Files -> Locations the computer stores data in
 - Directories -> Provides a way to store and organize files or other directories
 - Path -> The route it takes to reach a file or directory
@@ -37,14 +37,14 @@
     - `ls` -> Lists files in cwd
     - `cd` -> Change directory
 
-# File Globbing
+## File Globbing
 > By default, if nothing is matched the glob itself will be returned
 - `*` -> Matches anything of anylength
 - `?` -. Matches anything of 1 char length
 - `[]` -> Matches anything within the bracket of 1 char length
     - Append ^ (on newer versions) or ! will invert this glob
 
-# Piping & IO
+## Piping & IO
 > On linux everything is a file
 - file descriptor (fd) -> A unique non-negative number for identifying a file
 - Linux has three standard streams:
@@ -71,7 +71,7 @@
 - You can create your own permanent named pipe w/ mkfifo
 
 
-# Bash Variables
+## Bash Variables
 - May contain numbers, a character, or a string of characters
 - Defined by `VAR=value`
 - Variables are called by prepending $ `echo $VAR`
@@ -83,7 +83,7 @@
 - Command Substitution -> Replaces `$(CMD)` w/ the output of `CMD`
     - `VAR=$(CMD)`
 
-# Linux Processes CMDs
+## Linux Processes CMDs
 - `ps` -> To list processes
 - `kill` -> To kill processes
 - `CTRL-C` -> Hotkey to kill the current process
@@ -92,7 +92,7 @@
 - `bg` -> Brings suspended processses into the background
 - `$?` -> Exit code of the previous command
 
-# Changing users & /etc/passwd + /etc/shadow
+## Changing users & /etc/passwd + /etc/shadow
 - `username:password:uid:gid:home_directory:default_shell`
 - Actual password is stored in `/etc/shadow`
 - `/etc/passwd` exists for historical reasons
@@ -100,7 +100,7 @@
 - `su <username>` -> To change user
 - `sudo <CMD>` -> To run `CMD` as root
 
-# Permissions
+## Permissions
 - Authorization -> What can you do in the system?
 - Authentication -> Who are you?
 - In a system @ a high level one must think about: who can do what? Do we trust them to do that? Can we eliminate risk? 
@@ -141,12 +141,12 @@
 - the SUID bit allows running the file as the owner of the file, SGID as the group
 - the sticky bit prevents non-owner to change the content of a directory
 
-# Chaining Commands
+## Chaining Commands
 - ; -> seperates commands on after the previous
 - && -> runs the next command if the previous was successful (exits with code 0)
 - || -> runs the next command if the previous was unsuccessful (exits with a non-zero code)
 
-# Bash Scripting
+## Bash Scripting
 - #! -> placed in the beginning a file to indicate it as an interpreted program; the path following the "shebang" is the path to the interpeter
     - Executed: /path/to/interpreter executable
 - Arguments w/ $0 (name of file), $1 (arg1), $2 (arg2), $3 (arg3), ...
@@ -166,7 +166,7 @@ then
 fi
 ```
 
-# Terminal Multiplexing
+## Terminal Multiplexing
 - Commands:
     - screen -> creates a virtual terminal within the already existing terminal (work keeps running if connection is dropped)
         - Detach a session w/ Ctrl-A then d
@@ -183,12 +183,12 @@ fi
         - Attach a session w/ tmux a
         - See a selection of windows w/ Ctrl-B then w
 
-# PATH
+## PATH
 - The PATH contains a list of directories where the shell will search through to find the program which corresponds to a command
 - Commands:
     - which <cmd> -> prints where the cmd actually is
 
-# Shenanigans And Destruction(;
+## Shenanigans And Destruction (;
 - In a bash shell, when starting up, it runs ~/.bashrc as a startup script -> this can be abused by an attacker 
 - Fork Bomb -> An executable which continuously launches a copy of itself to oblivion
 - Disk-Space Taker Upper -> `yes > file` takes up disk spae
