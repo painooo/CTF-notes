@@ -68,3 +68,63 @@ rm $FILE.o
 _start: ; tells the linker where program execution should begin (else execution starts at the top of the file)
 mov rax, 1
 ```
+
+## Memory
+- Registers are expensive ): -> we need a place to store lots of data fairly fast
+- Is used for everything & there is too much to name it all so we address them linearly
+    - Note: each address is to 1 byte in memory
+    - From 0x10000 (for security reasons) -to> 0x7fffffffffff (for architecture/OS purposes)
+- The process' memory is initially partially filled by the OS
+    - Contains:
+        1. Program Binary Code
+        2. Dynamically Allocated Memory (managed by libraries)
+        3. Library Code
+        4. The Stack
+        5. OS Helper Region
+        - The proccess can request more memory (known as the Dynamic Mapped Memory)
+
+- The Stack
+    - Registers and immediates can be **push**ed onto the stack or **pop**ped off the stack
+        - push 0x1
+        - pop rax ; rax = 0x1
+    - Each stack entry is the bit width of the architecture
+        - Note: even on 64-bit CPUs we can only push 32-bit immediates
+    - Follows First In Last Out (FILO)
+    - Is placed randomly, but typically at a higher address (because it...)
+    - Grows backwards: push -> substracts 8 from rsp, pop -> adds 8 from rsp
+- push rcx:
+```
+sub rsp, 8
+mov [rsp], rcx
+```
+- pop rcx:
+```
+mov rcx, [rsp]
+add rsp, 8
+``` 
+- [address or register-storing-address] -> references the value at the address
+    - mov rax, [0x111] -> rax => value @ 0x111
+    - mov [0x111], rax -> value @ 0x111 => rax
+    - addresses can be calculated directly within the bracket some sort of base address + offset 
+        - mov rbx, [rsp+rax\*8]
+    - lea -> lea rbx, [rsp+rax\*8+5] ; rbx now contains the calculated address
+    - Limited to: reg+reg\*(2 or 4 or 8)+value
+
+- Fewer bits can be loaded by simply using partials
+    - In this case storing 32bit partials **doesn't** zero out the register
+
+- Memories stores items in little-endian (aka backwards)
+    - little-endian -> LSB -to> MSB (memory)
+    - big-endian -> MSB -to> LSB (register)
+    - Note: only bytes are affected, not individual bits
+
+- RIP-Relative Addressing
+    - lea can directly access the rip register
+    - we are able to read/write to the location the rip register is pointing towards
+        - mov rax, [rip]
+        - mov [rip], rax
+
+- Writing immediate values to memory requires specifying a size
+    - mov DWORD ptr [rax], 0x1111
+
+
