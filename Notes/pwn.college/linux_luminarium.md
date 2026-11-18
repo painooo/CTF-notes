@@ -8,7 +8,7 @@
     - hostname -> Name of the host
     - cwd -> Current Working Directory
     - $ -> User, unprivileged
-    - # -> Root, privileged
+    - \# -> Root, privileged
     - cmd -> command (e.g. ls)
     - argument(s) -> passes additional data to the command (e.g. ls **-la**)
 
