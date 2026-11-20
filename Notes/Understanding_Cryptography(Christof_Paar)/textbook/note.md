@@ -120,7 +120,7 @@ graph TD;
             2. Smarter:
                 1. Perform partial exponentiation ($3^8 = 3^4 * 3^4 = 81 * 81$)
                 2. Replace (81) by another member of the same equiv. class (4)
-                3. $3^8=81*81\equiv{4*4=16\mod{7}}$ -> $16\equiv{2\mod{7}}$
+                3. $3^8=81x81\equiv{4x4=16\mod{7}}$ -> $16\equiv{2\mod{7}}$
                 - **It is always a computational advantage to apply the modulo reduction whenever possible in order to keep the number small** 
                 - Which remainder/member do we choose?
                     - By agreement: 0 <= r <= (m-1)
