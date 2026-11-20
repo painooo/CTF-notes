@@ -120,7 +120,7 @@ graph TD;
             2. Smarter:
                 1. Perform partial exponentiation ($3^8 = 3^4 * 3^4 = 81 * 81$)
                 2. Replace (81) by another member of the same equiv. class (4)
-                3. $3^8=81*81\equiv{4*4=16\mod{7}}$ -> $16\equiv{2\mod{7}}$
+                3. $3^8=81*81\equiv{44=16\mod{7}}$ -> $16\equiv{2\mod{7}}$
                 - **It is always a computational advantage to apply the modulo reduction whenever possible in order to keep the number small** 
                 - Which remainder/member do we choose?
                     - By agreement: 0 <= r <= (m-1)
@@ -134,7 +134,7 @@ graph TD;
             2. $a*b\equiv{d\mod{m}}$, (${d\in{Z_m}}$)
     - Ex) m = 9
         - Set: $Z_9=\{0,1,2,3,4,5,6,7,8\}$
-        - $6+8=14\equiv{5\mod{9}]$
+        - $6+8=14\equiv{5\mod{9}}$
         - $6*8=48\equiv{3\mod{9}}$
     - Properties:
         - We can add or multiply any two numbers and the result will always be within the ring. Ring is said to be closed
